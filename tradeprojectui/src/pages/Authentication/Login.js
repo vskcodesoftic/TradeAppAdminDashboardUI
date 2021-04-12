@@ -51,7 +51,7 @@ class Login extends Component {
                           Welcome Back !
                         </h5>
                         <p className="text-white-50">
-                          Sign in to continue to Veltrix.
+                          Sign in to continue to Think Big.
                         </p>
                         <Link to="/" className="logo logo-admin">
                           <img src={logoSm} height="24" alt="logo" />
@@ -133,8 +133,8 @@ class Login extends Component {
                     </Link>{" "}
                   </p>
                   <p className="mb-0">
-                    © {new Date().getFullYear()} Veltrix. Crafted with{" "}
-                    <i className="mdi mdi-heart text-danger"></i> by Themesbrand
+                    © {new Date().getFullYear()} ThinkBig{" "} Developed 
+                    <i className="mdi mdi-heart text-danger"></i> by Codesoftic Tech Pvt Ltd.
                   </p>
                 </div>
               </Col>
