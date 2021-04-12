@@ -11,7 +11,7 @@ import ForgetPwd from "../pages/Authentication/FogetPassword";
 
 import Dashboard from "../pages/Dashboard";
 
-import Calendar from "../pages/Apps/Calendar/index";
+import Users from "../pages/Apps/Users/index";
 
 import EmailInbox from "../pages/Apps/Email/inbox";
 import EmailRead from "../pages/Apps/Email/read";
@@ -96,10 +96,13 @@ import Pages404 from "../pages/ExtraPages/Pages404";
 import Pages500 from "../pages/ExtraPages/Pages500";
 import PagesMaintenance from "../pages/ExtraPages/PagesMaintenance";
 import PagesComingsoon from "../pages/ExtraPages/PagesComingsoon";
+import Products from "../pages/Apps/Product";
 
 const authProtectedRoutes = [
-  // Calendar
-  { path: "/calendar", component: Calendar },
+  // Users
+  { path: "/users", component: Users },
+  //products
+  { path: "/products", component: Products },
 
   // Email & Email Templates
   { path: "/email-inbox", component: EmailInbox },

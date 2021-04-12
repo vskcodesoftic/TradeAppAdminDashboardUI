@@ -72,10 +72,7 @@ class TopBar extends Component {
         <header id="page-topbar">
           <div className="navbar-header">
             <div className="d-flex">
-              <div
-                className="navbar-brand-box"
-              >
-
+              <div className="navbar-brand-box">
                 <Link to="/" className="logo logo-dark">
                   <span className="logo-sm">
                     <img src={logosmImg} alt="" height="22" />
@@ -105,18 +102,6 @@ class TopBar extends Component {
             </div>
 
             <div className="d-flex">
-              <form className="app-search d-none d-lg-block">
-                <div className="position-relative">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search..."
-                  />
-                  <span className="fa fa-search"></span>
-                </div>
-              </form>
-
-              <LanguageDropdown />
               <div className="dropdown d-none d-lg-inline-block">
                 <button
                   type="button"
@@ -131,26 +116,7 @@ class TopBar extends Component {
 
               <ProfileMenu />
 
-              <div className="dropdown d-inline-block">
-                <button
-                  type="button"
-                  onClick={this.toggleRightbar}
-                  className="btn header-item noti-icon right-bar-toggle waves-effect"
-                >
-                  <i className="mdi mdi-settings-outline"></i>
-                </button>
-              </div>
-
-              <div className="dropdown d-inline-block">
-                <button
-                  type="button"
-                  onClick={this.toggleRightbar}
-                  className="btn header-item noti-icon right-bar-toggle waves-effect"
-                >
-                  <i className="bx bx-cog bx-spin"></i>
-                </button>
-              </div>
-            </div>
+           </div>
           </div>
         </header>
       </React.Fragment>

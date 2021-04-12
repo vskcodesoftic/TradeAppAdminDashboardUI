@@ -2,7 +2,8 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 let users = [
-  { id: 1, username: 'test', password: 'test', email: 'test@gmail.com' }
+  { id: 1, username: 'test', password: 'test', email: 'test@gmail.com' },
+  {id :2, username: 'codesoftic' , password : 'codesoftic' , email : 'codesoftic@gmail.com'}
 ];
 
 const fakeBackend = () => {

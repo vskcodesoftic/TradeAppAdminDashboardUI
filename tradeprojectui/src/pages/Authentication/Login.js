@@ -121,22 +121,7 @@ class Login extends Component {
                     </CardBody>
                   </Card>
                 </div>
-                <div className="mt-5 text-center">
-                  <p>
-                    Don't have an account ?{" "}
-                    <Link
-                      to="pages-register"
-                      className="font-weight-medium text-primary"
-                    >
-                      {" "}
-                      Signup now{" "}
-                    </Link>{" "}
-                  </p>
-                  <p className="mb-0">
-                    © {new Date().getFullYear()} ThinkBig{" "} Developed 
-                    <i className="mdi mdi-heart text-danger"></i> by Codesoftic Tech Pvt Ltd.
-                  </p>
-                </div>
+          
               </Col>
             </Row>
           </div>
