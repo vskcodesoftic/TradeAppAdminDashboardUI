@@ -6,9 +6,8 @@ const Footer = () => {
       <footer className="footer">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-12">
-              © {new Date().getFullYear()} FutureThinking
-             
+          <div className="col-12">
+              © {new Date().getFullYear()} Future Thinking
             </div>
           </div>
         </div>

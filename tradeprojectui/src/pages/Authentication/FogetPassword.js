@@ -98,22 +98,7 @@ class ForgetPasswordPage extends Component {
                       </div>
                     </CardBody>
                   </Card>
-                  <div className="mt-5 text-center">
-                    <p>
-                      Go back to{" "}
-                      <Link
-                        to="pages-login"
-                        className="font-weight-medium text-primary"
-                      >
-                        Login
-                      </Link>{" "}
-                    </p>
-                    <p className="mb-0">
-                      © {new Date().getFullYear()} Veltrix. Crafted with{" "}
-                      <i className="mdi mdi-heart text-danger"></i> by
-                      Themesbrand
-                    </p>
-                  </div>
+            
                 </div>
               </Col>
             </Row>

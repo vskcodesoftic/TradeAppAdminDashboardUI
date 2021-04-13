@@ -10,7 +10,6 @@ import {
 } from "../../store/actions";
 
 // Other Layout related Component
-import RightSidebar from "../../components/RightSidebar";
 import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -76,7 +75,6 @@ class Layout extends Component {
             <div className="page-content">{this.props.children}</div>
           </div>
           <Footer />
-          <RightSidebar />
         </div>
       </React.Fragment>
     );

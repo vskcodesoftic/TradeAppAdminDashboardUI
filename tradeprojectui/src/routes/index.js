@@ -53,13 +53,6 @@ import FormXeditable from "../pages/Forms/FormXeditable";
 import FormWizard from "../pages/Forms/FormWizard";
 import FormEditor from "../pages/Forms/FormEditor";
 
-// Charts
-import ChartistChart from "../pages/Charts/ChartistChart";
-import ChartjsChart from "../pages/Charts/ChartjsChart";
-import ApexChart from "../pages/Charts/ApexChart";
-import SarklineChart from "../pages/Charts/SarklineChart";
-import EchartChart from "../pages/Charts/EChart";
-
 //Tables
 import TableBasic from "../pages/Tables/TableBasic";
 import TableDatatable from "../pages/Tables/TableDatatable";
@@ -97,12 +90,37 @@ import Pages500 from "../pages/ExtraPages/Pages500";
 import PagesMaintenance from "../pages/ExtraPages/PagesMaintenance";
 import PagesComingsoon from "../pages/ExtraPages/PagesComingsoon";
 import Products from "../pages/Apps/Product";
+import PaymentsPageDataTabel from "../pages/Apps/Payments/Payments";
+import CreatePlan from "../pages/Apps/Plans/CreatePlan";
+import PlansPage from "../pages/Apps/Plans/Plans";
+import UpdatePassword from "../pages/Authentication/UpdatePassword";
+import SendNotification from "../pages/Apps/Notifications/SendNotification";
 
 const authProtectedRoutes = [
   // Users
   { path: "/users", component: Users },
   //products
   { path: "/products", component: Products },
+  //paymentsPage
+  { path: "/payments", component: PaymentsPageDataTabel },
+   //plans
+     
+   //paymentsPage
+  { path: "/plans/createPlan", component: CreatePlan },
+  
+  //edit update
+
+  { path: "/plans", component: PlansPage },
+
+  //update Password
+
+  { path: "/update-password", component: UpdatePassword },
+
+
+  //send Notification to all users
+  { path: "/send-notification" , component: SendNotification },
+
+
 
   // Email & Email Templates
   { path: "/email-inbox", component: EmailInbox },
@@ -146,12 +164,6 @@ const authProtectedRoutes = [
   { path: "/form-wizard", component: FormWizard },
   { path: "/form-editors", component: FormEditor },
 
-  //Charts
-  { path: "/charts-chartist", component: ChartistChart },
-  { path: "/charts-chartjs", component: ChartjsChart },
-  { path: "/apex-chart", component: ApexChart },
-  { path: "/charts-sparkline", component: SarklineChart },
-  { path: "/e-charts", component: EchartChart },
 
   //Tables
   { path: "/tables-basic", component: TableBasic },
@@ -180,9 +192,9 @@ const authProtectedRoutes = [
   { path: "/pages-gallery", component: PagesGallery },
   { path: "/pages-faq", component: PagesFaq },
 
-  { path: "/dashboard", component: Dashboard },
+  { path: "/admin/dashboard", component: Dashboard },
 
-  { path: "/", exact: true, component: () => <Redirect to="/dashboard" /> }
+  { path: "/", exact: true, component: () => <Redirect to="/admin/dashboard" /> }
 ];
 
 const publicRoutes = [

@@ -39,7 +39,7 @@ const SidebarContent = props => {
             </li>
           </ul>
         </li>
-
+      
         <li className="menu-title">Payments</li>
         <li>
           <Link to="/#" className="has-arrow waves-effect">
@@ -48,7 +48,21 @@ const SidebarContent = props => {
           </Link>
           <ul className="sub-menu">
             <li>
-              <Link to="ui-alerts">Payments</Link>
+              <Link to="/payments">Payments</Link>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li className="menu-title">Notifications</li>
+        <li>
+          <Link to="/#" className="has-arrow waves-effect">
+            <i className="ti-wallet"></i>
+            <span>Send Notification</span>
+          </Link>
+          <ul className="sub-menu">
+            <li>
+              <Link to="/send-notification">To All Users</Link>
             </li>
           </ul>
         </li>
@@ -58,11 +72,14 @@ const SidebarContent = props => {
         <li>
           <Link to="/#" className="has-arrow waves-effect">
             <i className="ti-archive"></i>
-            <span> Create Plans </span>
+            <span> Plans </span>
           </Link>
           <ul className="sub-menu">
             <li>
-              <Link to="pages-login-2">Plans</Link>
+              <Link to="/plans/createPlan">Create Plan</Link>
+            </li>
+            <li>
+              <Link to="/plans">Plans</Link>
             </li>
        </ul>
         </li>
@@ -70,7 +87,7 @@ const SidebarContent = props => {
         <li className="menu-title">User</li>
 
 <li>
-  <Link to="/dashboard" className="waves-effect">
+  <Link to="/update-password" className="waves-effect">
     <i className="ti-lock"></i>
     {/* <span className="badge badge-pill badge-primary float-right">
       2

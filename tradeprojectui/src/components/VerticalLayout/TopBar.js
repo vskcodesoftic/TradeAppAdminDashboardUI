@@ -12,11 +12,10 @@ import {
 import logodarkImg from "../../assets/images/logo-dark.png";
 import logosmImg from "../../assets/images/logo-sm.png";
 import logolightImg from "../../assets/images/logo-light.png";
-
+import  logoFutureThinking from "../../assets/images/logo300.png"
 // Import other Dropdown
-import LanguageDropdown from "../../components/LanguageDropdown";
 import NotificationDropdown from "../../components/NotificationDropdown";
-import ProfileMenu from "../../components/ProfileMenu";
+import ProfileMenu from "../ProfileMenu";
 
 class TopBar extends Component {
   constructor(props) {
@@ -100,10 +99,10 @@ class TopBar extends Component {
 
                 <Link to="/dashboard" className="logo logo-light">
                   <span className="logo-sm">
-                    <img src={logosmImg} alt="" height="22" />
+                    <img src={logoFutureThinking} alt="" height="22" />
                   </span>
-                  <span className="logo-lg">
-                    <img src={logolightImg} alt="" height="18" />
+                  <span className="logo-lg mt-5">
+                    <img src={logoFutureThinking} alt="" height="150" />
                   </span>
                 </Link>
               </div>
@@ -116,20 +115,28 @@ class TopBar extends Component {
                 <i className="mdi mdi-menu"></i>
               </button>
 
-        
-            </div>
+           </div>
 
             <div className="d-flex">
-       
-
-         
-         
             
+
+          
+              <div className="dropdown d-none d-lg-inline-block">
+                <button
+                  type="button"
+                  className="btn header-item noti-icon waves-effect"
+                  onClick={this.toggleFullscreen}
+                  data-toggle="fullscreen"
+                >
+                  <i className="mdi mdi-fullscreen"></i>
+                </button>
+              </div>
 
               <NotificationDropdown />
 
-              <ProfileMenu />
-        </div>
+             <ProfileMenu />
+      
+            </div>
           </div>
         </header>
       </React.Fragment>

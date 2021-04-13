@@ -11,7 +11,6 @@ import {
   changeLayoutWidth
 } from "../../store/actions";
 
-import RightSidebar from "../../components/RightSidebar";
 import TopBar from "./TopBar";
 // Other Layout related Component
 import Sidebar from "./Sidebar";
@@ -42,7 +41,7 @@ class Layout extends Component {
     let currentage = this.capitalizeFirstLetter(this.props.location.pathname);
 
     document.title =
-      currentage + " | Veltrix - Responsive Bootstrap 4 Admin Dashboard";
+      currentage + " | FutureThnking - Admin Dashboard";
     if (this.props.leftSideBarTheme) {
       this.props.changeSidebarTheme(this.props.leftSideBarTheme);
     }
@@ -92,7 +91,6 @@ class Layout extends Component {
           </div>
           <Footer />
 
-          <RightSidebar />
         </div>
       </React.Fragment>
     );
