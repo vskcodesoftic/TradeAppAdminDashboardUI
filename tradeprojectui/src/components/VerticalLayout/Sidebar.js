@@ -2,10 +2,25 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import MetisMenu from "metismenujs";
 
+import {AuthContext} from '../../Shared/context/auth-context'
+
+import { useAuth } from '../../Shared/hooks/auth-hook';
+
+
 import SimpleBar from "simplebar-react";
 
 const SidebarContent = props => {
+  const { token, login, logout, userId } = useAuth();
   return (
+    <AuthContext.Provider
+    value={{ 
+      isLoggedIn: !!token, 
+      token : token,
+      login: login, 
+      userId : userId,
+       logout: logout
+       }}
+  >
     <div id="sidebar-menu">
       <ul className="metismenu list-unstyled" id="side-menu">
         <li className="menu-title">Main</li>
@@ -19,14 +34,14 @@ const SidebarContent = props => {
             <span>Dashboard</span>
           </Link>
         </li>
-
+        {token && (
         <li>
           <Link to="/users" className=" waves-effect">
             <i className="ti-user"></i>
             <span>Users</span>
           </Link>
         </li>
-
+        )}
         <li>
           <Link to="/#" className="has-arrow waves-effect">
             <i className="ti-shopping-cart-full
@@ -106,6 +121,7 @@ const SidebarContent = props => {
 </li>
    </ul>
     </div>
+  </AuthContext.Provider>
   );
 };
 

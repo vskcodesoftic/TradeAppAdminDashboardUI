@@ -1,35 +1,44 @@
-import React from "react";
+import React , { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 //AUTH related methods
 import { getFirebaseBackend } from "../helpers/authUtils";
 
-const AppRoute = ({
-  component: Component,
+import {AuthContext} from '../../src/Shared/context/auth-context'
+
+
+const AppRoute = ({  component: Component,
   layout: Layout,
-  isAuthProtected,
-  ...rest
-}) => (
-  <Route
-    {...rest}
-    render={props => {
-      const fireBaseBackend = getFirebaseBackend();
+  isAuthProtected}) => 
 
-      if (isAuthProtected && !fireBaseBackend.getAuthenticatedUser()) {
-        return (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
-        );
-      }
+{
+  return(
+    <>
+      (
+ 
 
-      return (
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      );
-    }}
-  />
-);
+ <Route
+   render={props => {
+
+     if (isAuthProtected ) {
+       return (
+         <Redirect
+           to={{ pathname: "/login", state: { from: props.location } }}
+         />
+       );
+     }
+
+     return (
+       <Layout>
+         <Component {...props} />
+       </Layout>
+     );
+   }}
+ />
+)
+    </>
+  )
+}
+
 
 export default AppRoute;

@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { useContext, useState } from "react";
 import { Row, Col, Card, CardBody, Alert } from "reactstrap";
+import { useHistory } from 'react-router-dom';
+
 
 // Redux
 import { connect } from "react-redux";
@@ -10,26 +12,58 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 
 import Loader from "../../components/Loader";
 // actions
-import { loginUser } from "../../store/actions";
 
 // import images
 import logoSm from "../../assets/images/logo-sm.png";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+import { useFormik } from 'formik';
+import { useHttpClient } from "../../Shared/hooks/http-hook";
+import { AuthContext } from "../../Shared/context/auth-context";
 
-    // handleValidSubmit
-    this.handleValidSubmit = this.handleValidSubmit.bind(this);
+
+const Login = (props) =>  {
+  const history = useHistory()
+  const auth = useContext(AuthContext);
+  const [isLoginMode, setIsLoginMode] = useState(true);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    
+  const submitHandler = async (email, pwd) => {
+    try {
+      const responseData = await sendRequest(
+         process.env.REACT_APP_BACKEND_URL+'api/user/login',
+         'POST',
+         JSON.stringify({
+           email: email,
+           password: pwd
+         }),
+         {
+           'Content-Type': 'application/json'
+         }
+       );
+       auth.login(responseData.userId , responseData.token);
+       history.push('/admin/dashboard');
+      
+     } catch (err) {
+       console.log(err)
+     }
+    
+
   }
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password : ''
+    },
+    onSubmit: values => {
+      // alert(JSON.stringify(values, null, 2));
+     const email = values.email;
+     const pwd = values.password;
 
-  // handleValidSubmit
-  handleValidSubmit(event, values) {
-    this.props.loginUser(values, this.props.history);
-  }
+     
 
-  render() {
+       submitHandler(email , pwd); 
+    },
+  });
     return (
       <React.Fragment>
         <div className="home-btn d-none d-sm-block">
@@ -42,7 +76,7 @@ class Login extends Component {
             <Row className="justify-content-center">
               <Col md={8} lg={6} xl={5}>
                 <div className="position-relative">
-                  {this.props.loading ? <Loader /> : null}
+                  {props.loading ? <Loader /> : null}
 
                   <Card className="overflow-hidden">
                     <div className="bg-primary">
@@ -63,10 +97,10 @@ class Login extends Component {
                       <div className="p-3">
                         <AvForm
                           className="form-horizontal mt-4"
-                          onValidSubmit={this.handleValidSubmit}
+                          onValidSubmit={formik.handleSubmit}
                         >
-                          {this.props.error ? (
-                            <Alert color="danger">{this.props.error}</Alert>
+                          {props.error ? (
+                            <Alert color="danger">{props.error}</Alert>
                           ) : null}
 
                           <div className="form-group">
@@ -74,10 +108,11 @@ class Login extends Component {
                               name="email"
                               label="Email"
                               className="form-control"
-                              value="admin@themesbrand.com"
                               placeholder="Enter email"
                               type="email"
                               required
+                              onChange={formik.handleChange}
+                              value={formik.values.email}
                             />
                           </div>
                           <div className="form-group">
@@ -86,8 +121,9 @@ class Login extends Component {
                               label="Password"
                               type="password"
                               required
-                              value="123456"
                               placeholder="Enter Password"
+                              onChange={formik.handleChange}
+                              value={formik.values.password}
                             />
                           </div>
 
@@ -128,12 +164,9 @@ class Login extends Component {
         </div>
       </React.Fragment>
     );
-  }
+  
 }
 
-const mapStatetoProps = state => {
-  const { error, loading } = state.Login;
-  return { error, loading };
-};
 
-export default withRouter(connect(mapStatetoProps, { loginUser })(Login));
+
+export default Login

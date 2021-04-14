@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { useEffect, useState  , useContext } from "react";
 import { Switch, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
+
 
 // Import Routes
 import { authProtectedRoutes, publicRoutes } from "./routes/";
@@ -14,37 +15,19 @@ import NonAuthLayout from "./components/NonAuthLayout";
 // Import scss
 import "./assets/scss/theme.scss";
 
-// Import Firebase Configuration file
-import { initFirebaseBackend } from "./helpers/authUtils";
+//auth context
+import { AuthContext } from '../src/Shared/context/auth-context';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBUctS2mlPY58Y-E1AypSUz7OO0zhlBLC8",
-  authDomain: "themesbrand-admin.firebaseapp.com",
-  databaseURL: "https://themesbrand-admin.firebaseio.com",
-  projectId: "themesbrand-admin",
-  storageBucket: "themesbrand-admin.appspot.com",
-  messagingSenderId: "427667224207",
-  appId: "1:427667224207:web:3b97af80b8b4824619a2fa",
-  measurementId: "G-S4LDYNV7FY"
-};
+const App = (props) => {
+  const [ state, setstate ] = useState({ })
+  const auth = useContext(AuthContext)
+  console.log(auth.isLoggedIn)
 
-// init firebase backend
-initFirebaseBackend(firebaseConfig);
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.getLayout = this.getLayout.bind(this);
-  }
-
-  /**
-   * Returns the layout
-   */
+  let getLayout;
   getLayout = () => {
     let layoutCls = VerticalLayout;
 
-    switch (this.props.layout.layoutType) {
+    switch (props.layout.layoutType) {
       case "horizontal":
         layoutCls = HorizontalLayout;
         break;
@@ -54,38 +37,51 @@ class App extends Component {
     }
     return layoutCls;
   };
+  useEffect(() => {
+  getLayout()
+  
+  }, [])
+ 
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  //   this.getLayout = this.getLayout.bind(this);
+  // }
 
-  render() {
-    const Layout = this.getLayout();
+  /**
+   * Returns the layout
+   */
+ 
+    const Layout = getLayout();
 
     return (
       <React.Fragment>
         <Router>
           <Switch>
-            {publicRoutes.map((route, idx) => (
+            { publicRoutes.map((route, idx) => (
               <AppRoute
                 path={route.path}
                 layout={NonAuthLayout}
                 component={route.component}
                 key={idx}
-                isAuthProtected={false}
+                isAuthProtected= {auth.isLoggedIn}
               />
             ))}
 
-            {authProtectedRoutes.map((route, idx) => (
+            { authProtectedRoutes.map((route, idx) => (
               <AppRoute
                 path={route.path}
                 layout={Layout}
                 component={route.component}
                 key={idx}
-                isAuthProtected={true}
+                isAuthProtected={!auth.isLoggedIn}
               />
             ))}
           </Switch>
         </Router>
       </React.Fragment>
     );
-  }
+  
 }
 
 const mapStateToProps = state => {

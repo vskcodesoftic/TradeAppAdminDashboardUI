@@ -23,6 +23,9 @@ import PlansPage from "../pages/Apps/Plans/Plans";
 import UpdatePassword from "../pages/Authentication/UpdatePassword";
 import SendNotification from "../pages/Apps/Notifications/SendNotification";
 
+
+
+
 const authProtectedRoutes = [
   // Users
   { path: "/users", component: Users },
@@ -54,6 +57,7 @@ const authProtectedRoutes = [
 ];
 
 const publicRoutes = [
+
   { path: "/logout", component: Logout },
   { path: "/login", component: Login },
   { path: "/forget-password", component: ForgetPwd },

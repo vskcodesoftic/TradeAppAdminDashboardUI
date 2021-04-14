@@ -21,6 +21,7 @@
     "echarts": "4.9.0",
     "echarts-for-react": "^2.0.16",
     "firebase": "^8.2.1",
+    "formik": "^2.2.6",
     "fullcalendar": "^5.4.0",
     "fullcalendar-reactwrapper": "^1.0.7",
     "google-maps-react": "^2.0.6",

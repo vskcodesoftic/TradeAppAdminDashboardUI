@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SettingMenu from "../../Shared/SettingMenu";
+import SettingMenu from "../../../Shared/SettingMenu";
 import {
   Row,
   Col,
